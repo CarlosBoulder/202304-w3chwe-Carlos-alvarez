@@ -1,17 +1,31 @@
-import pokemons from "../../pokemons.js";
+import {
+  type PokemonsDataStructure,
+  type PokemonDetailStructure,
+} from "../../types.js";
 import Component from "../Component/Component.js";
 import PokemonCardComponent from "../PokemonCardComponent/PokemonCardComponent.js";
 
-class PokemonListComponent extends Component {
-  constructor(parentElement: Element) {
-    super(parentElement, "ul", "pokemon-list row list-unstyled");
+const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
 
+class PokemonListComponent extends Component {
+  private pokemons: PokemonDetailStructure[] = [];
+
+  constructor(parentElement: Element) {
+    super(parentElement, "div", "row");
+
+    (async () => this.getPokemon())();
+  }
+
+  async getPokemon(): Promise<void> {
+    const response = await fetch(apiUrl);
+    const pokemonDataResult = (await response.json()) as PokemonsDataStructure;
+    this.pokemons = pokemonDataResult.results;
     this.renderHtml();
   }
 
   renderHtml(): void {
-    pokemons.forEach(() => {
-      new PokemonCardComponent(this.element);
+    this.pokemons.forEach((pokemon: PokemonDetailStructure) => {
+      new PokemonCardComponent(this.element, pokemon);
     });
   }
 }

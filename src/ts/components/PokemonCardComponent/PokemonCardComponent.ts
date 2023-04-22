@@ -1,20 +1,24 @@
+import { type PokemonDetailStructure } from "../../types.js";
 import Component from "../Component/Component.js";
 
 class PokemonCardComponent extends Component {
-  constructor(parentElement: Element) {
-    super(parentElement, "li", "pokemon col");
+  private readonly pokemon: PokemonDetailStructure;
 
+  constructor(parentElement: Element, pokemon: PokemonDetailStructure) {
+    super(parentElement, "div", "col-xl-3 col-md-6 mb-4");
+
+    this.pokemon = pokemon;
     this.renderHtml();
   }
 
   renderHtml(): void {
     this.element.innerHTML = `
-    <div class="card pokemon__card">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="" class="pokemon__image card-img-top" />
-        <div class="card-body">
-          <h2 class="pokemon__name card-title h4">spearow</h2>
+        <div class="card border-0 shadow">
+          <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">${this.pokemon.name}</h5>
+          </div>
         </div>
-    </div> 
     `;
   }
 }
