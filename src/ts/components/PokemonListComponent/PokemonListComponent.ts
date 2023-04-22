@@ -1,16 +1,18 @@
+import pokemons from "../../pokemons.js";
 import Component from "../Component/Component.js";
+import PokemonCardComponent from "../PokemonCardComponent/PokemonCardComponent.js";
 
 class PokemonListComponent extends Component {
   constructor(parentElement: Element) {
-    super(parentElement, "ul", "pokemonList");
+    super(parentElement, "ul", "pokemon-list row list-unstyled");
 
     this.renderHtml();
   }
 
   renderHtml(): void {
-    this.element.innerHTML = `
-      <ul class="pokemonList">Picachúuu!</ul>
-    `;
+    pokemons.forEach(() => {
+      new PokemonCardComponent(this.element);
+    });
   }
 }
 
