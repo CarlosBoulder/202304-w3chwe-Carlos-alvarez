@@ -1,4 +1,4 @@
-import Component from "../Component/Component";
+import Component from "../Component/Component.js";
 
 class PokemonListComponent extends Component {
   constructor(parentElement: Element) {
@@ -9,7 +9,7 @@ class PokemonListComponent extends Component {
 
   renderHtml(): void {
     this.element.innerHTML = `
-      
+      <ul class="pokemonList">Picachúuu!</ul>
     `;
   }
 }
