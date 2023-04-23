@@ -13,8 +13,13 @@ export interface PokemonsDataStructure {
   results: PokemonDetailStructure[];
 }
 
+export interface Ability {
+  name: string;
+}
 export interface PokemonInfoStructure {
   id: number;
+  name: string;
+  base_experience: number;
   sprites: {
     other: {
       "official-artwork": {
@@ -24,4 +29,5 @@ export interface PokemonInfoStructure {
   };
   weight: number;
   height: number;
+  abilities: Ability[];
 }

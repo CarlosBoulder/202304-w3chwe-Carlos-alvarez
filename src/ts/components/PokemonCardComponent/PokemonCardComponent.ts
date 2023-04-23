@@ -1,3 +1,4 @@
+import DataHandler from "../../data/DataHandler.js";
 import {
   type PokemonInfoStructure,
   type PokemonDetailStructure,
@@ -13,14 +14,14 @@ class PokemonCardComponent extends Component {
 
     this.pokemon = pokemon;
 
-    (async () => this.getPokemonImage())();
+    (async () => this.getData())();
   }
 
-  async getPokemonImage(): Promise<void> {
-    const response = await fetch(this.pokemon.url);
-    const pokemonImageResult = (await response.json()) as PokemonInfoStructure;
+  async getData(): Promise<void> {
+    const dataHandler = new DataHandler(this.pokemon.url);
+    const pokemonDetailsResult = await dataHandler.getPokemonDetails();
 
-    this.pokemonImage = pokemonImageResult;
+    this.pokemonImage = pokemonDetailsResult;
 
     this.renderHtml();
   }
@@ -28,9 +29,11 @@ class PokemonCardComponent extends Component {
   renderHtml(): void {
     this.element.innerHTML = `
         <div class="card border-0 shadow">
-          <img src="${this.pokemonImage.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="...">
+        <a href="/pokemondetails?url=${this.pokemon.url}"> 
+        <img src="${this.pokemonImage.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">${this.pokemon.name}</h5>
+            </a> 
           </div>
         </div>
     `;
