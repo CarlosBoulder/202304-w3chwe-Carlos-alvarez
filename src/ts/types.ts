@@ -14,7 +14,9 @@ export interface PokemonsDataStructure {
 }
 
 export interface Ability {
-  name: string;
+  ability: {
+    name: string;
+  };
 }
 export interface PokemonInfoStructure {
   id: number;

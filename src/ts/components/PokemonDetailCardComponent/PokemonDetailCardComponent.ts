@@ -48,7 +48,7 @@ class PokemonDetailCardComponent extends Component {
   getAbilities(): string {
     let abilities = "";
     this.pokemonDetails.abilities.forEach((ability: Ability) => {
-      abilities += ability.name + "-";
+      abilities += ability.ability.name + " /";
     });
     return abilities;
   }
