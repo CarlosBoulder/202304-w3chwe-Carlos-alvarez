@@ -5,7 +5,7 @@ import {
 import Component from "../Component/Component.js";
 import PokemonCardComponent from "../PokemonCardComponent/PokemonCardComponent.js";
 
-const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
+const apiUrl = "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0";
 
 class PokemonListComponent extends Component {
   private pokemons: PokemonDetailStructure[] = [];
@@ -19,7 +19,9 @@ class PokemonListComponent extends Component {
   async getPokemon(): Promise<void> {
     const response = await fetch(apiUrl);
     const pokemonDataResult = (await response.json()) as PokemonsDataStructure;
+
     this.pokemons = pokemonDataResult.results;
+
     this.renderHtml();
   }
 
