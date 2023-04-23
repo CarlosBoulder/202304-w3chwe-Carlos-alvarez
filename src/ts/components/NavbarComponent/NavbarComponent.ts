@@ -2,19 +2,21 @@ import Component from "../Component/Component.js";
 
 class NavbarComponent extends Component {
   constructor(parentElement: Element) {
-    super(parentElement, "nav", "navbar");
+    super(
+      parentElement,
+      "nav",
+      "navbar navbar-expand-sm bg-primary navbar-dark"
+    );
 
     this.renderHtml();
   }
 
   renderHtml(): void {
     this.element.innerHTML = `
-      <nav class="navbar">
-        <ul>
-          <li><a href="#PokemonUniverse">Pokemon Universe</a></li>
-          <li><a href="#MyPokemons">My Pokemons</a></li>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Pokemon Universe</a></li>
+          <li class="nav-item"><a class="nav-link" href="#MyPokemons">My Pokemons</a></li>
         </ul>
-      </nav>
     `;
   }
 }

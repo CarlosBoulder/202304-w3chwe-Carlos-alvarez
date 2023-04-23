@@ -1,6 +1,6 @@
-import DataHandler from "../../data/DataHandler";
+import DataHandler from "../../data/DataHandler.js";
 import { type Ability, type PokemonInfoStructure } from "../../types";
-import Component from "../Component/Component";
+import Component from "../Component/Component.js";
 
 class PokemonDetailCardComponent extends Component {
   url: string;

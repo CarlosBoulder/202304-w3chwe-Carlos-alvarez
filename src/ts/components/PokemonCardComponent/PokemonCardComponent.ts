@@ -29,9 +29,11 @@ class PokemonCardComponent extends Component {
   renderHtml(): void {
     this.element.innerHTML = `
         <div class="card border-0 shadow">
-          <img src="${this.pokemonImage.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="...">
+        <a href="/pokemondetails?url=${this.pokemon.url}"> 
+        <img src="${this.pokemonImage.sprites.other["official-artwork"].front_default}" class="card-img-top" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">${this.pokemon.name}</h5>
+            </a> 
           </div>
         </div>
     `;
